@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    service:
+        build: helloworld-service
+        ports:
+            - "5000:5000"
+    test:
+        build: helloworld-test
+        depends_on:
+            - "service"
+        environment:
+            - TARGET=http://service:5000
+
